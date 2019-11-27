@@ -151,3 +151,12 @@ Nameは連続したCodeと、オプショナルなCountryを含みます。
 言語間の相互運用性はレコードのバイナリを通して達成され、フィールドはレコード内で現れた順番通りにレイアウトされます。
 このようにJavaで実装されたMapReduceのプログラムは、C++のライブラリ経由でデータソースのレコードを解釈できます。
 したがってもしレコードが列形式で保存されてる場合、それらを迅速にアセンブリすることは、MapReduceとその他データ処理ツールによる相互運用のために重要です。
+
+
+## 4. ネストされた列指向ストレージ
+As illustrated in Figure 1, our goal is to store all values of a given field consecutively to improve retrieval efficiency.
+図の1に示すように、私たちのゴールはあるフィールドの全ての値を連続して格納することで、検索の効率を上げて行くことです。
+In this section, we address the following challenges: lossless representation of record structure in a columnar format (Section 4.1)
+この章では、次の課題に対処します。列形式を損失なくレコード構造に表現し直す方法（セクション4.1）
+fast encoding(Section 4.2),and efficient record assembly (Section 4.3).
+迅速なエンコーディング(セクション4.2)、また効率的なレコードの組み立て（セクション4.3）
