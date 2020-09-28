@@ -40,4 +40,10 @@ https://tailscale.com/blog/how-nat-traversal-works/
         * カフェのWifiを使用している場合など。
 * そのためファイアウォールの設定変更を含まない対処法が必要となる。
 
-    
+
+## Finessing finicky firewalls
+* 上述の通りStateFul Firewallのルールによると、UDPは**outboundのパケットが先にアクセスしない限り、inboundのパケットは絶対にアクセスできない。**
+* しかしUDPはハンドシェイクを行わないので、outboundで送った先のIPやポートが正しくパケットを受け取れているか？の確認はしない。
+* そのため送った先のIPやポートからのレスポンスに見えるアクセス（どういうこと？）は全てinboundとしてアクセスできる。
+* お互いが必要な情報としてはIPアドレスとポート番号。
+* staticな情報としてIP:PORTを固定してもいいが、一般的にはCoordination Serverで柔軟に管理できる
